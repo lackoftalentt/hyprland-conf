@@ -1,0 +1,119 @@
+@import url("macchiato.css");
+
+* {
+  font-family: "JetBrains Mono", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  border: none;
+  min-height: 0;
+}
+
+/* Убираем общий фон у всего окна */
+window#waybar {
+  background: transparent;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+/* Убираем старый hover-эффект */
+button {
+  box-shadow: none;
+  border: none;
+}
+
+button:hover {
+  background: inherit;
+  box-shadow: none;
+}
+
+/* ===== Разделённые Pill-модули ===== */
+
+/* Убираем общий контейнерный фон */
+.modules-right,
+.modules-left,
+.modules-center {
+  background: transparent;
+  padding: 0;
+  margin: 6px 10px;
+}
+
+/* Каждый модуль = отдельная капсула */
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#window,
+#workspaces {
+  background-color: @base;
+  border-radius: 16px;
+  padding: 6px 14px;
+  margin: 0 6px;
+}
+
+/* Workspace внутри своей капсулы */
+#workspaces button {
+  padding: 4px 10px;
+  margin: 0 3px;
+  border-radius: 10px;
+  background: transparent;
+  color: @rosewater;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: @surface2;
+}
+
+#workspaces button.focused {
+  background-color: @rosewater;
+  color: @base;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+/* Цвета модулей */
+#pulseaudio { color: @maroon; }
+#network { color: @yellow; }
+#temperature { color: @sky; }
+#battery { color: @green; }
+#clock { color: @flamingo; }
+#cpu { color: @peach; }
+#memory { color: @green; }
+#window { color: @text; }
+
+#battery.charging,
+#battery.plugged {
+  color: @sapphire;
+}
+
+/* Критическая батарея */
+@keyframes blink {
+  to {
+    color: #000000;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#pulseaudio.muted {
+  color: @text;
+}
+
+#w
+}
